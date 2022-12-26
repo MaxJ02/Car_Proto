@@ -1,5 +1,3 @@
-#ifndef CAR_H_
-#define CAR_H_
 
 #include <stdio.h>
 #include <string.h>
@@ -20,8 +18,7 @@ struct car
     enum car_transmission transmission;
 };
 
-
-
+void car_delete(struct car* car_ptr);
 
 
 #endif /* CAR_H_ */
