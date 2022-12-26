@@ -1,17 +1,17 @@
 #include "car.h"
 
-void car_init(struct car* c, 
+void car_init(struct car* self, 
               const char* brand,
               const char* model, 
               const char* color, 
               unsigned int year_of_launch, 
               enum car_transmission transmission) 
 {
-    strcpy(c->brand, brand);
-    strcpy(c->model, model);
-    strcpy(c->color, color);
-    c->year_of_launch = year_of_launch;
-    c->transmission = transmission;
+     (self->brand, brand);
+     (self->model, model);
+     (self->color, color);
+      self->year_of_launch = year_of_launch;
+      self->transmission = transmission;
 }
 
 void car_clear(struct car* c) 
@@ -24,10 +24,10 @@ void car_clear(struct car* c)
 }
 
 struct car* car_new(const char* brand,
-    const char* model,
-    const char* color,
-    unsigned int year_of_launch,
-    enum car_transmission transmission)
+                    const char* model,
+                    const char* color,
+                    unsigned int year_of_launch,
+                    enum car_transmission transmission)
 {
     struct car* c = malloc(sizeof(struct car));
     if (c == NULL)
@@ -37,27 +37,38 @@ struct car* car_new(const char* brand,
     }
 }
 
-void car_print(const struct car* c, FILE* stream)
-{
-    fprintf(stream, "Brand: %s\n", c->brand);
-    fprintf(stream, "Model: %s\n", c->model);
-    fprintf(stream, "Color: %s\n", c->color);
-    fprintf(stream, "Year of launch: %u\n", c->year_of_launch);
-    fprintf(stream, "Transmission: %s\n", (c->transmission == MANUELL) ? "MANUELL" : "AUTOMAT");
-}
 
-void car_change_color(struct car* c, const char* color) 
-{
-    strcpy(c->color, color);
-}
-
-void car_change_transmission(struct car* c)
-{
-    if (c->transmission == MANUELL) {
-        c->transmission = AUTOMAT;
+void car_delete(struct car* car_ptr) {
+    if (car_ptr == NULL) {
+        return;
     }
-    else if (c->transmission == AUTOMAT)
+    free(car_ptr);
+}
+
+
+void car_print(const struct car* self, FILE* stream)
+{
+    fprintf(stream, "Brand: %s\n", self->brand);
+    fprintf(stream, "Model: %s\n", self->model);
+    fprintf(stream, "Color: %s\n", self->color);
+    fprintf(stream, "Year of launch: %u\n", self->year_of_launch);
+    fprintf(stream, "Transmission: %s\n", (self->transmission == MANUELL) ? "MANUELL" : "AUTOMAT");
+}
+
+void car_change_color(struct car* self, const char* new_color) 
+{
+    self->color == new_color;
+    return;
+}
+
+
+void car_change_transmission(struct car* self)
+{
+    if (self->transmission == MANUELL) {
+        self->transmission = AUTOMAT;
+    }
+    else if (self->transmission = AUTOMAT)
     {
-        c->transmission = MANUELL;
+        self->transmission = MANUELL;
     }
 }
