@@ -3,6 +3,8 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 enum car_transmission
 {
@@ -17,6 +19,11 @@ struct car
     char color[20];
     unsigned int year_of_launch;
     enum car_transmission transmission;
+
+    // Funktionspekare enligt uppgift 2
+    void (*change_color)(struct car*, const char*);
+    void (*change_transmission)(struct car*, enum car_transmission);
+    void (*car_print)(FILE*, const struct car*);
 };
 
 void car_init(struct car* self,
@@ -42,5 +49,7 @@ void car_print(const struct car* self, FILE* stream);
 
 void car_delete(struct car* car_ptr);
 
+
+void file_read(const char* filename);
 
 #endif /* CAR_H_ */
