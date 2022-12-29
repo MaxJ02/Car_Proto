@@ -7,6 +7,18 @@ void car_init(struct car* self,
     unsigned int year_of_launch,
     enum car_transmission transmission)
 {
+    // Set the car's fields
+    strcpy(self->brand, brand);
+    strcpy(self->model, model);
+    strcpy(self->color, color);
+    self->year_of_launch = year_of_launch;
+    self->transmission = transmission;
+
+    // Set the function pointers to the corresponding functions
+    self->change_color = &car_change_color;
+    self->change_transmission = &car_change_transmission;
+    self->car_print = &car_print;
+
     (self->brand, brand);
     (self->model, model);
     (self->color, color);
@@ -24,10 +36,10 @@ void car_clear(struct car* c)
 }
 
 struct car* car_new(const char* brand,
-                    const char* model,
-                    const char* color,
-                    unsigned int year_of_launch,
-                    enum car_transmission transmission)
+    const char* model,
+    const char* color,
+    unsigned int year_of_launch,
+    enum car_transmission transmission)
 {
     struct car* c = malloc(sizeof(struct car));
     if (c == NULL)
@@ -35,6 +47,7 @@ struct car* car_new(const char* brand,
         // Allocation failed
         return NULL;
     }
+    return c;
 }
 
 
@@ -71,10 +84,9 @@ void car_change_color(struct car* car, const char* color)
         return;
     }
 
-    // Kopierar värdet av färgen
+    // Copy the value of color into the color attribute of the car object
     size_t i;
-    for (i = 0; color[i] != '\0'; i++) 
-    {
+    for (i = 0; color[i] != '\0'; i++) {
         car->color[i] = color[i];
     }
     car->color[i] = '\0';
@@ -90,4 +102,22 @@ void extern car_change_transmission(struct car* self)
     {
         self->transmission = MANUAL;
     }
+}
+
+void file_read(const char* filename, FILE* fp) {
+    // Open the file for reading
+    FILE* file = fopen(filename, "r");
+    if (!file) {
+        perror("Error opening file");
+        return;
+    }
+
+    // Read and print each line of the file
+    char line[256];
+    while (fgets(line, sizeof line, file)) {
+        fprintf(fp, "%s", line);
+    }
+
+    // Close the file
+    fclose(file);
 }
