@@ -2,7 +2,9 @@
 
 /********************************************************************************
 * Detta är versionen av main för G uppgiften. Versionen med Vtables finns bifogad
-* som main2.c
+* i classroom med en länk till ett separat repository. Jag gjorde denna uppdelningen 
+* lite sen och därför finns vissa delar av VG koden med i car.h och car.c även i denna repositoryn.
+* Dock används de inte i denna.
 ********************************************************************************/
 
 /**************************************************************************************************************************
