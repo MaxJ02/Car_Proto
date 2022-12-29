@@ -3,7 +3,7 @@
 void car_init(struct car* self,
     const char* brand,
     const char* model,
-    const char* color,
+    const char* color,   
     unsigned int year_of_launch,
     enum car_transmission transmission)
 {
@@ -14,7 +14,6 @@ void car_init(struct car* self,
     self->year_of_launch = year_of_launch;
     self->transmission = transmission;
 
-    // Set the function pointers to the corresponding functions
     self->change_color = &car_change_color;
     self->change_transmission = &car_change_transmission;
     self->car_print = &car_print;
@@ -66,7 +65,7 @@ void car_print(const struct car* self, FILE* stream)
     fprintf(stream, "Model: %s\n", self->model);
     fprintf(stream, "Color: %s\n", self->color);
     fprintf(stream, "Year of launch: %u\n", self->year_of_launch);
-    if (self->transmission == MANUAL) 
+    if (self->transmission == MANUAL)
     {
         fprintf(stream, "Transmission: Manual\n");
     }
@@ -78,7 +77,7 @@ void car_print(const struct car* self, FILE* stream)
 }
 
 
-void car_change_color(struct car* car, const char* color) 
+void car_change_color(struct car* car, const char* color)
 {
     if (car == NULL || color == NULL) {
         return;
@@ -120,4 +119,15 @@ void file_read(const char* filename, FILE* fp) {
 
     // Close the file
     fclose(file);
+}
+
+const struct car_vtable* car_vptr_get(void) 
+{
+    static const struct car_vtable vtable = 
+    {
+        &car_change_color,
+        &car_change_transmission,
+        &car_print
+    };
+    return &vtable;
 }
