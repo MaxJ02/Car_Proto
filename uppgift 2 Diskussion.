@@ -4,4 +4,9 @@ programmering (uppgift 2). Vad anser du om respektive implementering, ser du nå
 gällande struktur, enkelhet med mera. Först och främst, vilken implementering föredrar du?
 
 
-Svar: Personligen så tycker jag att 
+Svar: Personligen så tycker jag att externa funktioner med struktpekare som self är att föredra. Det må inte se lika snyggt ut men personligen tycker jag
+inte det är värt mödan att försöka efterlikna den objektorienterade strukturen i c++. Det blir svårare att skriva med ynka snyggare kod, vilket personligen inte 
+känns värt det.
+
+Strukturen i koden blir givetvis tydligare med objektorienterad programmering, speciellt för programmerare som är med vana med det tänket, men jag skulle även gissa att
+det blir enklare att förstå som icke programmerare. 
