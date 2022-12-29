@@ -17,7 +17,6 @@ int main(void)
 
 	car_change_transmission(&car3);
 
-	//Skriver ut car3 igen för att säkerställa att bytet av växellåda och färg genomfördes korrekt.
 	car_print(&car3, stdout);
 
   FILE* fp = fopen("cars.txt", "w");
@@ -26,15 +25,17 @@ int main(void)
     return 1;
   }
 
-  //Här skrivs innehållet ur cars arrayen ut till filen carss.txt via funktionen car_print
+  //Här skrivs innehållet ur cars arrayen ut till filen cars.txt via funktionen car_print
   size_t i;
   for (i = 0; i < 3; i++) {
-    car_print(fp, cars[i]);
+    car_print(cars[i], fp);
   }
 
-  // Stänger filen carss.txt
+  // Stänger filen cars.txt
   fclose(fp);
 
+  //Skriver ut innehållet i angiven fil rad för rad, i angiven utström. 
+  file_read("cars.txt", stdout);
 
 	return 0;
 }
