@@ -115,14 +115,3 @@ void file_read(const char* filename, FILE* fp) {
     // Close the file
     fclose(file);
 }
-
-const struct car_vtable* car_vptr_get(void) 
-{
-    static const struct car_vtable vtable = 
-    {
-        &car_change_color,
-        &car_change_transmission,
-        &car_print
-    };
-    return &vtable;
-}
