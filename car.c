@@ -7,7 +7,6 @@ void car_init(struct car* self,
     unsigned int year_of_launch,
     enum car_transmission transmission)
 {
-    // Set the car's fields
     strcpy(self->brand, brand);
     strcpy(self->model, model);
     strcpy(self->color, color);
@@ -82,8 +81,6 @@ void car_change_color(struct car* car, const char* color)
     if (car == NULL || color == NULL) {
         return;
     }
-
-    // Copy the value of color into the color attribute of the car object
     size_t i;
     for (i = 0; color[i] != '\0'; i++) {
         car->color[i] = color[i];
@@ -110,8 +107,6 @@ void file_read(const char* filename, FILE* fp) {
         perror("Error opening file");
         return;
     }
-
-    // Read and print each line of the file
     char line[256];
     while (fgets(line, sizeof line, file)) {
         fprintf(fp, "%s", line);
