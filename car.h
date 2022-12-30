@@ -24,10 +24,6 @@ struct car
     void (*change_color)(struct car*, const char*);
     void (*change_transmission)(struct car*, enum car_transmission);
     void (*car_print)(FILE*, const struct car*);
-
-
-    //Vtable pekare för car objekt.
-    const struct car_vtable* vptr;
 };
 
 void car_init(struct car* self,
@@ -55,12 +51,5 @@ void car_delete(struct car* car_ptr);
 
 
 void file_read(const char* filename);
-
-struct car_vtable 
-{
-  void (*change_color)(struct car*, const char*);
-  void (*change_transmission)(struct car*, enum car_transmission);
-  void (*car_print)(FILE*, const struct car*);
-};
 
 #endif /* CAR_H_ */
